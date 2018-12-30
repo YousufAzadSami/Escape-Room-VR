@@ -1087,7 +1087,7 @@ GameObject:
   - component: {fileID: 4321555369519564}
   - component: {fileID: 95111608267639292}
   m_Layer: 0
-  m_Name: FullRoomForUnity
+  m_Name: EscapeRoomFull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
