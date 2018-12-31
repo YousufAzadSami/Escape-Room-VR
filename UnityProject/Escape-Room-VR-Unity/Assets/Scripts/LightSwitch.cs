@@ -17,21 +17,28 @@ public class LightSwitch : MonoBehaviour {
 		
 	}
 
-	public void OnTriggerEnter(Collider collider)
+	public void OnTriggerStay(Collider collider)
     {
         if (collider.transform.tag == "Player")
         {
-            Debug.Log("Object Name: " + collider.transform.name);
+			// Debug.Log("Object Name: " + collider.transform.name);
 
-			// if player interacts by pressing by any key 
-			// OR 
-			// just by coming in the trigger zone following actions will be performed
+			if(Input.GetKeyDown(KeyCode.E))
+			{
+				// if player interacts by pressing by any key 
+				// OR 
+				// just by coming in the trigger zone following actions will be performed
+				// idea #1 4 different lights can be found by swithcing off(bottom), on(top) the light
+				// and Vive controller key press will determine wihch will be shown
+				// idea #2 4 different lights can be found by swithching off(bottom), on(top), right and left
+				// and Vive controller direction will determine which will be shown
 
-			// move the switch handle
-			SwithcHandleAnimation();
-			// and 
-			// turn differnt lights (switch between them)
-			SwitchDifferentLights();
+				// move the switch handle
+				SwithcHandleAnimation();
+				// and 
+				// turn differnt lights (switch between them)
+				SwitchDifferentLights();
+			}
         }
     }
 
@@ -42,8 +49,7 @@ public class LightSwitch : MonoBehaviour {
 	}
 
 	private void SwitchDifferentLights()
-	{
-		// TODO
-		Debug.Log("TODO");
+	{		
+		chandelierLight.GetComponent<ChandelierLIght>().ChangeLight();
 	}
 }
