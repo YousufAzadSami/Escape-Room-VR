@@ -10,11 +10,11 @@ public class ChandelierLIght : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		// sets up light colors
 		lightColors.Add(Color.red);
 		lightColors.Add(Color.green);
 		lightColors.Add(Color.blue);
 		lightColors.Add(GetComponent<Light>().color);
-		// Debug.Log("Length : " + lightColors.Count);
 
 		currentColorIndex = -1;
 	}

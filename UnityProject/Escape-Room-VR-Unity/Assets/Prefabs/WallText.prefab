@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 102692396749004768}
   m_Layer: 0
   m_Name: WallText
-  m_TagString: Untagged
+  m_TagString: WallText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,9 +82,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1655196132322440}
-  m_Text: '1
-
-'
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 0.02
   m_LineSpacing: 1

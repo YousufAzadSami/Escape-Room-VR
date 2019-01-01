@@ -6,10 +6,15 @@ public class LightSwitch : MonoBehaviour {
 
 	public string chandelierLightName = "ChandelierLight";
 	private GameObject chandelierLight;
+	private GameObject[] wallText;
+	private int indexWallText = -2;
+	private bool wallTextFake;
 
 	// Use this for initialization
 	void Start () {
 		chandelierLight = GameObject.Find(chandelierLightName);
+
+		initWallTextStuff();
 	}
 	
 	// Update is called once per frame
@@ -38,6 +43,9 @@ public class LightSwitch : MonoBehaviour {
 				// and 
 				// turn differnt lights (switch between them)
 				SwitchDifferentLights();
+				// and 
+				// change text on the wall
+				ChangeTextWall();
 			}
         }
     }
@@ -51,5 +59,40 @@ public class LightSwitch : MonoBehaviour {
 	private void SwitchDifferentLights()
 	{		
 		chandelierLight.GetComponent<ChandelierLIght>().ChangeLight();
+	}
+
+	private void ChangeTextWall()
+	{
+		if(wallTextFake)
+		{
+			indexWallText++;
+			if(indexWallText >= wallText.Length)
+			{
+				indexWallText = 0;
+			}
+			// change the text
+			TextMesh textMesh = wallText[indexWallText].GetComponent<TextMesh>();
+			if(textMesh.text.Length < 1)
+			{
+				textMesh.text = textMesh.text + indexWallText.ToString();
+			}
+
+			// TODO
+			// start animation (invisible to visible, and back)
+		}
+		else
+		{
+			wallTextFake = true;
+		}
+	}
+
+	private void initWallTextStuff()
+	{
+		// finds the gameobjects with wall text (for numbers)
+		wallText = GameObject.FindGameObjectsWithTag("WallText");
+		indexWallText = -1;
+		// initially setting to false, so that when switching on first time
+		// nothing will happen.
+		wallTextFake = false;
 	}
 }
