@@ -61,6 +61,16 @@ public class LightSwitch : MonoBehaviour {
 		chandelierLight.GetComponent<ChandelierLIght>().ChangeLight();
 	}
 
+	private void initWallTextStuff()
+	{
+		// finds the gameobjects with wall text (for numbers)
+		wallText = GameObject.FindGameObjectsWithTag("WallText");
+		indexWallText = -1;
+		// initially setting to false, so that when switching on first time
+		// nothing will happen.
+		wallTextFake = false;
+	}
+
 	private void ChangeTextWall()
 	{
 		if(wallTextFake)
@@ -74,7 +84,8 @@ public class LightSwitch : MonoBehaviour {
 			TextMesh textMesh = wallText[indexWallText].GetComponent<TextMesh>();
 			if(textMesh.text.Length < 1)
 			{
-				textMesh.text = textMesh.text + indexWallText.ToString();
+				string passCode = PuzzleManager.GetPassCodes().ToString();
+				textMesh.text = textMesh.text + passCode[indexWallText];
 			}
 
 			// TODO
@@ -84,15 +95,5 @@ public class LightSwitch : MonoBehaviour {
 		{
 			wallTextFake = true;
 		}
-	}
-
-	private void initWallTextStuff()
-	{
-		// finds the gameobjects with wall text (for numbers)
-		wallText = GameObject.FindGameObjectsWithTag("WallText");
-		indexWallText = -1;
-		// initially setting to false, so that when switching on first time
-		// nothing will happen.
-		wallTextFake = false;
 	}
 }
