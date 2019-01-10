@@ -10,11 +10,15 @@ public class LightSwitch : MonoBehaviour {
 	private int indexWallText = -2;
 	private bool wallTextFake;
 
+	private Animator animator;
+
 	// Use this for initialization
 	void Start () {
 		chandelierLight = GameObject.Find(chandelierLightName);
 
 		initWallTextStuff();
+
+		animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -52,8 +56,15 @@ public class LightSwitch : MonoBehaviour {
 
 	private void SwithcHandleAnimation()
 	{
-		// TODO
-		Debug.Log("TODO");
+		bool isSwitchOn = animator.GetBool("isSwitchOn");
+		if(isSwitchOn)
+		{
+			animator.SetBool("isSwitchOn", false);
+		}
+		else 
+		{
+			animator.SetBool("isSwitchOn", true);
+		}
 	}
 
 	private void SwitchDifferentLights()
