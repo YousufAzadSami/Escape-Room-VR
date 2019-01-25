@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR;
 
 public class LightSwitch : MonoBehaviour {
 
@@ -26,7 +27,7 @@ public class LightSwitch : MonoBehaviour {
 		
 	}
 
-	public void OnTriggerStay(Collider collider)
+	void OnTriggerStay(Collider collider)
     {
         if (collider.transform.tag == "Player")
         {
@@ -34,27 +35,52 @@ public class LightSwitch : MonoBehaviour {
 
 			if(Input.GetKeyDown(KeyCode.E))
 			{
-				// if player interacts by pressing by any key 
-				// OR 
-				// just by coming in the trigger zone following actions will be performed
-				// idea #1 4 different lights can be found by swithcing off(bottom), on(top) the light
-				// and Vive controller key press will determine wihch will be shown
-				// idea #2 4 different lights can be found by swithching off(bottom), on(top), right and left
-				// and Vive controller direction will determine which will be shown
-
-				// move the switch handle
-				SwithcHandleAnimation();
-				// and 
-				// turn differnt lights (switch between them)
-				SwitchDifferentLights();
-				// and 
-				// change text on the wall
-				ChangeTextWall();
+                AllSwithHandleStuff();
 			}
         }
+
+        if (collider.transform.tag == "Hand")
+        {
+            // Debug.Log("Object Name: " + collider.transform.name);
+
+            if (SteamVR_Input._default.inActions.GrabPinch.GetStateDown(SteamVR_Input_Sources.Any))
+            {
+                //Debug.Log("Grab Pinch Down");
+                AllSwithHandleStuff();
+            }
+        }
+
+
+        // Debug.Log("Object Name: " + collider.transform.name);
     }
 
-	private void SwithcHandleAnimation()
+    void OnTriggerEnter(Collider other)
+    {
+        //Debug.Log("OnTriggerEnter");
+        //Debug.Log("Object Name: " + other.transform.name);
+    }
+
+    private void AllSwithHandleStuff()
+    {
+        // if player interacts by pressing by any key 
+        // OR 
+        // just by coming in the trigger zone following actions will be performed
+        // idea #1 4 different lights can be found by swithcing off(bottom), on(top) the light
+        // and Vive controller key press will determine wihch will be shown
+        // idea #2 4 different lights can be found by swithching off(bottom), on(top), right and left
+        // and Vive controller direction will determine which will be shown
+
+        // move the switch handle
+        SwithcHandleAnimation();
+        // and 
+        // turn differnt lights (switch between them)
+        SwitchDifferentLights();
+        // and 
+        // change text on the wall
+        ChangeTextWall();
+    }
+
+    private void SwithcHandleAnimation()
 	{
 		bool isSwitchOn = animator.GetBool("isSwitchOn");
 		if(isSwitchOn)
