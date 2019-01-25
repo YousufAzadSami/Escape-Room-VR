@@ -15,8 +15,18 @@ public class InputTest : MonoBehaviour {
         float x = SteamVR_Input._default.inActions.Squeeze.GetAxis(SteamVR_Input_Sources.Any);
         if (x > 0)
         {
-            Debug.Log("Squeeze : " + x);
+            // Debug.Log("Squeeze : " + x);
         }
-        
-	}
+
+        if (SteamVR_Input._default.inActions.GrabPinch.GetStateDown(SteamVR_Input_Sources.Any))
+        {
+            Debug.Log("Grab Pinch Down");
+        }
+
+        if (SteamVR_Input._default.inActions.GrabPinch.GetStateUp(SteamVR_Input_Sources.Any))
+        {
+            Debug.Log("Grab Pinch Up");
+        }
+
+    }
 }
