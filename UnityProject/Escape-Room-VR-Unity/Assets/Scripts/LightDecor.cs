@@ -28,7 +28,7 @@ public class LightDecor : MonoBehaviour {
             // set this object to deactive
             actual.SetActive(false);
             // set shattered version to active
-            //shatter.SetActive(true);
+            shatter.SetActive(true);
             // set card to active
             card.SetActive(true);
         }
