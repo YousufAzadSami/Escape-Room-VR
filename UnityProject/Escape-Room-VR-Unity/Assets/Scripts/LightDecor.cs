@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class LightDecor : MonoBehaviour {
 
+
+    public GameObject actual;
+    public GameObject shatter;
     public GameObject card;
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        card.SetActive(false);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -23,9 +26,9 @@ public class LightDecor : MonoBehaviour {
         if (_object)
         {
             // set this object to deactive
-            gameObject.SetActive(false);
+            actual.SetActive(false);
             // set shattered version to active
-            
+            //shatter.SetActive(true);
             // set card to active
             card.SetActive(true);
         }
