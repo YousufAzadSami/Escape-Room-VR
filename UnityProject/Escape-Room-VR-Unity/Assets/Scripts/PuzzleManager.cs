@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR;
 
 public class PuzzleManager : MonoBehaviour {
 
@@ -34,12 +35,18 @@ public class PuzzleManager : MonoBehaviour {
 		// }
 		
 		currentPuzzleLevel = PuzzleLevel.One;
-	}
+
+        Debug.Log("Puzzle Manager GameObject name : " + transform.name);
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if (SteamVR_Input._default.inActions.GrabPinch.GetStateDown(SteamVR_Input_Sources.Any))
+        {
+            //Debug.Log("Grab Pinch Down");
+            OnPuzzleOneSolved();
+        }
+    }
 
 	public static int GetPassCodes()
 	{
@@ -49,4 +56,15 @@ public class PuzzleManager : MonoBehaviour {
 		}
 		return -1;
 	}
+
+    public static void OnPuzzleOneSolved()
+    {
+        GameObject pointLight00 = GameObject.Find("Point Light (0)");
+        if (pointLight00)
+        {
+            pointLight00.GetComponent<Light>().color = Color.green;
+        }
+
+        currentPuzzleLevel = PuzzleLevel.Two;
+    }
 }

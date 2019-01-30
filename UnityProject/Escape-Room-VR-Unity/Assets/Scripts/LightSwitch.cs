@@ -78,6 +78,9 @@ public class LightSwitch : MonoBehaviour {
         // and 
         // change text on the wall
         ChangeTextWall();
+
+        // change satatus light
+        PuzzleManager.OnPuzzleOneSolved();
     }
 
     private void SwithcHandleAnimation()
