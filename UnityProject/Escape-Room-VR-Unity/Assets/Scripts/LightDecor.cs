@@ -9,6 +9,8 @@ public class LightDecor : MonoBehaviour {
     public GameObject shatter;
     public GameObject card;
 
+    public bool isDestructable = true;
+
 	// Use this for initialization
 	void Start () {
         card.SetActive(false);
@@ -21,17 +23,19 @@ public class LightDecor : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
-        Valve.VR.InteractionSystem.Throwable _object = collision.transform.GetComponent<Valve.VR.InteractionSystem.Throwable>();
-
-        if (_object)
+        if (isDestructable)
         {
-            // set this object to deactive
-            actual.SetActive(false);
-            // set shattered version to active
-            shatter.SetActive(true);
-            // set card to active
-            card.SetActive(true);
-        }
+            Valve.VR.InteractionSystem.Throwable _object = collision.transform.GetComponent<Valve.VR.InteractionSystem.Throwable>();
 
+            if (_object)
+            {
+                // set this object to deactive
+                actual.SetActive(false);
+                // set shattered version to active
+                shatter.SetActive(true);
+                // set card to active
+                card.SetActive(true);
+            }
+        }
     }
 }
