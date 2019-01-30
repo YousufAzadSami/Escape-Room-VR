@@ -9,6 +9,8 @@ public class Mirror : MonoBehaviour {
     public GameObject shatterMirror;
     public GameObject card;
 
+    public GameObject wallTextCanvas;
+
     // Use this for initialization
     void Start () {
         shatterMirror.SetActive(false);
@@ -29,7 +31,12 @@ public class Mirror : MonoBehaviour {
             // set th
             normalMirror.SetActive(false);
             shatterMirror.SetActive(true);
-            card.SetActive(true);
+
+            // card.SetActive(true);
+            wallTextCanvas.GetComponent<Animator>().SetTrigger("triggerOnOff");
+
+            // Puzzle Manager
+            PuzzleManager.OnPuzzleTwoSolved();
         }
 
     }

@@ -65,6 +65,18 @@ public class PuzzleManager : MonoBehaviour {
             pointLight00.GetComponent<Light>().color = Color.green;
         }
 
+        // play audio 
+
+
         currentPuzzleLevel = PuzzleLevel.Two;
+    }
+
+    public static void OnPuzzleTwoSolved()
+    {
+        GameObject pointLight01 = GameObject.Find("Point Light (1)");
+        if (pointLight01)
+        {
+            pointLight01.GetComponent<Light>().color = Color.green;
+        }
     }
 }
