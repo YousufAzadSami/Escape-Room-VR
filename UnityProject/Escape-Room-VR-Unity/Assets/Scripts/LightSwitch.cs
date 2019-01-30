@@ -79,6 +79,8 @@ public class LightSwitch : MonoBehaviour {
         // change text on the wall
         ChangeTextWall();
 
+        TextWallCanvas();
+
         // change satatus light
         PuzzleManager.OnPuzzleOneSolved();
     }
@@ -136,4 +138,13 @@ public class LightSwitch : MonoBehaviour {
 			wallTextFake = true;
 		}
 	}
+
+    private void TextWallCanvas()
+    {
+        GameObject wallTextCanvas = GameObject.Find("WallTextCanvas");
+        if (wallTextCanvas)
+        {
+            wallTextCanvas.GetComponent<Animator>().SetTrigger("triggerOnOff");
+        }
+    }
 }
