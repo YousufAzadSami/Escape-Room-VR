@@ -41,11 +41,7 @@ public class PuzzleManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (SteamVR_Input._default.inActions.GrabPinch.GetStateDown(SteamVR_Input_Sources.Any))
-        {
-            //Debug.Log("Grab Pinch Down");
-            OnPuzzleOneSolved();
-        }
+
     }
 
 	public static int GetPassCodes()
@@ -57,8 +53,10 @@ public class PuzzleManager : MonoBehaviour {
 		return -1;
 	}
 
-    public static void OnPuzzleOneSolved()
+    public void OnPuzzleOneSolved()
     {
+        Debug.Log("PuzzleOneSolved()");
+
         GameObject pointLight00 = GameObject.Find("Point Light (0)");
         if (pointLight00)
         {
@@ -66,6 +64,7 @@ public class PuzzleManager : MonoBehaviour {
         }
 
         // play audio 
+        GetComponent<AudioSource>().Play();
 
 
         currentPuzzleLevel = PuzzleLevel.Two;

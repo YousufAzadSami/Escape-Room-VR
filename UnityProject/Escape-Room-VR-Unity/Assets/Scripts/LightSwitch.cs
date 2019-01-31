@@ -13,7 +13,8 @@ public class LightSwitch : MonoBehaviour {
 
     // this is related to the new WallTextCanvas
     // number of times switch was turned on and off
-    public int switchOnOffTimes; 
+    public int noOfTimesSwitched;
+    private int noOfTimesRequiredToSwitchTheLight = 3;
 
 	private Animator animator;
 
@@ -85,8 +86,11 @@ public class LightSwitch : MonoBehaviour {
 
         TextWallCanvas();
 
-        // change satatus light
-        PuzzleManager.OnPuzzleOneSolved();
+        if (noOfTimesSwitched == noOfTimesRequiredToSwitchTheLight)
+        {
+            // change satatus light
+            GameObject.Find("PuzzleManager").GetComponent<PuzzleManager>().OnPuzzleOneSolved();
+        }
     }
 
     private void SwithcHandleAnimation()
@@ -145,7 +149,7 @@ public class LightSwitch : MonoBehaviour {
 
     private void TextWallCanvas()
     {
-        if (++switchOnOffTimes == 4)
+        if (++noOfTimesSwitched % noOfTimesRequiredToSwitchTheLight == 0)
         {
             GameObject wallTextCanvas = GameObject.Find("WallTextCanvas01");
             if (wallTextCanvas)
