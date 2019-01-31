@@ -172,6 +172,48 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4763250558734772, guid: 8430bc2c902e3104584d56b51805e72c,
     type: 2}
   m_PrefabInternal: {fileID: 123762967}
+--- !u!1001 &251959685
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000014195058408, guid: 88075a54c7fb1484ba25db394b612917, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000014195058408, guid: 88075a54c7fb1484ba25db394b612917, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.1216
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000014195058408, guid: 88075a54c7fb1484ba25db394b612917, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.332
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000014195058408, guid: 88075a54c7fb1484ba25db394b612917, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000014195058408, guid: 88075a54c7fb1484ba25db394b612917, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000014195058408, guid: 88075a54c7fb1484ba25db394b612917, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000014195058408, guid: 88075a54c7fb1484ba25db394b612917, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000014195058408, guid: 88075a54c7fb1484ba25db394b612917, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 88075a54c7fb1484ba25db394b612917, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &279675756
 Prefab:
   m_ObjectHideFlags: 0
@@ -2096,6 +2138,10 @@ Prefab:
     - target: {fileID: 1585664611643518, guid: ff2bd3c8e49e54042bbf1d52fa1ea580, type: 2}
       propertyPath: m_Name
       value: WallTextCanvas02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252103958724462, guid: ff2bd3c8e49e54042bbf1d52fa1ea580, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff2bd3c8e49e54042bbf1d52fa1ea580, type: 2}
