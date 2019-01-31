@@ -70,12 +70,31 @@ public class PuzzleManager : MonoBehaviour {
         currentPuzzleLevel = PuzzleLevel.Two;
     }
 
-    public static void OnPuzzleTwoSolved()
+    public void OnPuzzleTwoSolved()
     {
         GameObject pointLight01 = GameObject.Find("Point Light (1)");
         if (pointLight01)
         {
             pointLight01.GetComponent<Light>().color = Color.green;
         }
+
+        // play audio 
+        GetComponent<AudioSource>().Play();
+
+        currentPuzzleLevel = PuzzleLevel.Three;
+    }
+
+    public void OnPuzzleThreeSolved()
+    {
+        GameObject pointLight01 = GameObject.Find("Point Light (2)");
+        if (pointLight01)
+        {
+            pointLight01.GetComponent<Light>().color = Color.green;
+        }
+
+        // play audio 
+        GetComponent<AudioSource>().Play();
+
+        currentPuzzleLevel = PuzzleLevel.Four;
     }
 }

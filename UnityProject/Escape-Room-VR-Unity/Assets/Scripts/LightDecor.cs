@@ -11,6 +11,8 @@ public class LightDecor : MonoBehaviour {
 
     public bool isDestructable = true;
 
+    public GameObject wallCanvasText;
+
 	// Use this for initialization
 	void Start () {
         card.SetActive(false);
@@ -31,10 +33,19 @@ public class LightDecor : MonoBehaviour {
             {
                 // set this object to deactive
                 actual.SetActive(false);
+
                 // set shattered version to active
                 shatter.SetActive(true);
+
                 // set card to active
-                card.SetActive(true);
+                //card.SetActive(true);
+
+                if (wallCanvasText)
+                {
+                    wallCanvasText.GetComponent<Animator>().SetTrigger("triggerOnOff");
+
+                    GameObject.Find("PuzzleManager").GetComponent<PuzzleManager>().OnPuzzleThreeSolved();
+                }
             }
         }
     }

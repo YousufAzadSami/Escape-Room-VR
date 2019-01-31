@@ -36,7 +36,7 @@ public class Mirror : MonoBehaviour {
             wallTextCanvas.GetComponent<Animator>().SetTrigger("triggerOnOff");
 
             // Puzzle Manager
-            PuzzleManager.OnPuzzleTwoSolved();
+            GameObject.Find("PuzzleManager").GetComponent<PuzzleManager>().OnPuzzleTwoSolved();
         }
 
     }
