@@ -1,7 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Valve.VR;
+using System.Linq;
 
 public class PuzzleManager : MonoBehaviour {
 
@@ -11,7 +12,10 @@ public class PuzzleManager : MonoBehaviour {
 	public static int PASS_CODE_02 = 456;
 	public static int PASS_CODE_03 = 789;
 
-	public enum PuzzleLevel
+    public List<int> correctCode;
+    public List<int> givenCode;
+
+    public enum PuzzleLevel
 	{
 		One, Two, Three, Four
 	}
@@ -36,11 +40,26 @@ public class PuzzleManager : MonoBehaviour {
 		
 		currentPuzzleLevel = PuzzleLevel.One;
 
+        setupCorrectCode();
+
         Debug.Log("Puzzle Manager GameObject name : " + transform.name);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void setupCorrectCode()
+    {
+        // so the correct code is 123
+        correctCode.Add(1);
+        correctCode.Add(2);
+        correctCode.Add(3);
+        //for (int i = 0; i < correctCode.Count; i++)
+        //{
+        //    Debug.Log(correctCode[i]);
+        //}
+        //Debug.Log(correctCode.Count);
+    }
+
+    // Update is called once per frame
+    void Update () {
 
     }
 
@@ -96,5 +115,20 @@ public class PuzzleManager : MonoBehaviour {
         GetComponent<AudioSource>().Play();
 
         currentPuzzleLevel = PuzzleLevel.Four;
+    }
+
+    public void CheckNumberCode(int inNumber)
+    {
+        givenCode.Add(inNumber);
+
+        if (correctCode.SequenceEqual(givenCode))
+        {
+            Debug.Log("Puzzle Solved");
+        }
+
+        if (givenCode.Count == 3)
+        {
+            givenCode.Clear();
+        }
     }
 }

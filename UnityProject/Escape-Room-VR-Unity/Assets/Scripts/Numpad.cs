@@ -5,13 +5,13 @@ using UnityEngine;
 public class Numpad : MonoBehaviour {
 
     public int number;
-    private GameObject puzzleManager;
+    private PuzzleManager puzzleManager;
 
 	// Use this for initialization
 	void Start () {
-        puzzleManager = GameObject.Find("PuzzleManager");
+        puzzleManager = GameObject.Find("PuzzleManager").GetComponent<PuzzleManager>();
 
-        if (! puzzleManager)
+        if (!puzzleManager)
         {
             Debug.Log("PuzzleManager not found");
         }
@@ -25,6 +25,6 @@ public class Numpad : MonoBehaviour {
     public void NumberButtonPressed()
     {
         Debug.Log("Button pressed : " + number);
-
+        puzzleManager.CheckNumberCode(number);
     }
 }
