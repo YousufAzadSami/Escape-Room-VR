@@ -11,13 +11,17 @@ public class LightSwitch : MonoBehaviour {
 	private int indexWallText = -2;
 	private bool wallTextFake;
 
+    // this is related to the new WallTextCanvas
+    // number of times switch was turned on and off
+    public int switchOnOffTimes; 
+
 	private Animator animator;
 
 	// Use this for initialization
 	void Start () {
 		chandelierLight = GameObject.Find(chandelierLightName);
 
-		initWallTextStuff();
+		//initWallTextStuff();
 
 		animator = GetComponent<Animator>();
 	}
@@ -77,7 +81,7 @@ public class LightSwitch : MonoBehaviour {
         SwitchDifferentLights();
         // and 
         // change text on the wall
-        ChangeTextWall();
+        //ChangeTextWall();
 
         TextWallCanvas();
 
@@ -141,10 +145,13 @@ public class LightSwitch : MonoBehaviour {
 
     private void TextWallCanvas()
     {
-        GameObject wallTextCanvas = GameObject.Find("WallTextCanvas");
-        if (wallTextCanvas)
+        if (++switchOnOffTimes == 4)
         {
-            wallTextCanvas.GetComponent<Animator>().SetTrigger("triggerOnOff");
+            GameObject wallTextCanvas = GameObject.Find("WallTextCanvas01");
+            if (wallTextCanvas)
+            {
+                wallTextCanvas.GetComponent<Animator>().SetTrigger("triggerOnOff");
+            }
         }
     }
 }
