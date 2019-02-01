@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class PuzzleManager : MonoBehaviour {
 
@@ -12,8 +13,11 @@ public class PuzzleManager : MonoBehaviour {
 	public static int PASS_CODE_02 = 456;
 	public static int PASS_CODE_03 = 789;
 
-    public List<int> correctCode;
-    public List<int> givenCode;
+    private List<int> correctCode;
+    private List<int> givenCode;
+
+    public Text numpadDisplayText;
+    public Image numpadDisplayImage;
 
     public enum PuzzleLevel
 	{
@@ -21,6 +25,10 @@ public class PuzzleManager : MonoBehaviour {
 	}
 
 	public static PuzzleLevel currentPuzzleLevel;
+
+    public AudioSource audioSource;
+    public AudioClip levelUp;
+    public AudioClip wrongBuzzer;
 
 	// Use this for initialization
 	void Start () {
@@ -42,11 +50,21 @@ public class PuzzleManager : MonoBehaviour {
 
         setupCorrectCode();
 
+        numpadDisplayText = GameObject.Find("NumpadDisplayText").GetComponent<Text>();
+        numpadDisplayText.text = "";
+        numpadDisplayImage = GameObject.Find("NumpadDisplayBackground").GetComponent<Image>();
+
+
+        audioSource = GetComponent<AudioSource>();
+
         Debug.Log("Puzzle Manager GameObject name : " + transform.name);
     }
 
     private void setupCorrectCode()
     {
+        correctCode = new List<int>();
+        givenCode = new List<int>();
+
         // so the correct code is 123
         correctCode.Add(1);
         correctCode.Add(2);
@@ -83,10 +101,16 @@ public class PuzzleManager : MonoBehaviour {
         }
 
         // play audio 
-        GetComponent<AudioSource>().Play();
+        playLevelUpAudio();
 
 
         currentPuzzleLevel = PuzzleLevel.Two;
+    }
+
+    private void playLevelUpAudio()
+    {
+        audioSource.clip = levelUp;
+        audioSource.Play();
     }
 
     public void OnPuzzleTwoSolved()
@@ -98,7 +122,7 @@ public class PuzzleManager : MonoBehaviour {
         }
 
         // play audio 
-        GetComponent<AudioSource>().Play();
+        playLevelUpAudio();
 
         currentPuzzleLevel = PuzzleLevel.Three;
     }
@@ -112,7 +136,7 @@ public class PuzzleManager : MonoBehaviour {
         }
 
         // play audio 
-        GetComponent<AudioSource>().Play();
+        playLevelUpAudio();
 
         currentPuzzleLevel = PuzzleLevel.Four;
     }
@@ -120,15 +144,43 @@ public class PuzzleManager : MonoBehaviour {
     public void CheckNumberCode(int inNumber)
     {
         givenCode.Add(inNumber);
+        numpadDisplayText.text += inNumber;
 
-        if (correctCode.SequenceEqual(givenCode))
-        {
-            Debug.Log("Puzzle Solved");
-        }
+
 
         if (givenCode.Count == 3)
         {
-            givenCode.Clear();
+            if (correctCode.SequenceEqual(givenCode))
+            {
+                Debug.Log("Puzzle Solved");
+
+                // green display background
+                numpadDisplayImage.color = Color.green;
+                // open door
+            }
+            else
+            {
+                // red display background
+                numpadDisplayImage.color = Color.red;
+                // play error sound
+                playWrongBuzzerAudio();
+
+                Invoke("ResetInput", 2);
+            }
         }
+    }
+
+    private void playWrongBuzzerAudio()
+    {
+        audioSource.clip = wrongBuzzer;
+        audioSource.Play();
+    }
+
+    public void ResetInput()
+    {
+        givenCode.Clear();
+        numpadDisplayText.text = "";
+
+        numpadDisplayImage.color = Color.white;
     }
 }
