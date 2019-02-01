@@ -157,6 +157,7 @@ public class PuzzleManager : MonoBehaviour {
                 // green display background
                 numpadDisplayImage.color = Color.green;
                 // open door
+                GameObject.Find("Door").GetComponent<Animator>().SetTrigger("OpenDoor");
             }
             else
             {
