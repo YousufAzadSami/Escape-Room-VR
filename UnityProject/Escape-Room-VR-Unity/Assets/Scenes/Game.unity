@@ -652,6 +652,18 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1686858789430104, guid: 4af6d4fb2b0084c198fc9d433994360b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763062934105232, guid: 4af6d4fb2b0084c198fc9d433994360b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1231826486781234, guid: 4af6d4fb2b0084c198fc9d433994360b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4af6d4fb2b0084c198fc9d433994360b, type: 2}
   m_IsPrefabAsset: 0
@@ -2630,6 +2642,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1859024862 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1590934052193228, guid: 4af6d4fb2b0084c198fc9d433994360b,
+    type: 2}
+  m_PrefabInternal: {fileID: 347255240}
+--- !u!65 &1859024863
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1859024862}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.74999994, y: 0.080604024, z: 1.2000003}
+  m_Center: {x: -8.206757e-18, y: 0.0004615226, z: 0.00000023841858}
 --- !u!1001 &1899824836
 Prefab:
   m_ObjectHideFlags: 0
