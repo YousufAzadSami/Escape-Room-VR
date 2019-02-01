@@ -40,6 +40,9 @@ public class LightDecor : MonoBehaviour {
                 // set card to active
                 //card.SetActive(true);
 
+                // play sound
+                GetComponent<AudioSource>().Play();
+
                 if (wallCanvasText)
                 {
                     wallCanvasText.GetComponent<Animator>().SetTrigger("triggerOnOff");
