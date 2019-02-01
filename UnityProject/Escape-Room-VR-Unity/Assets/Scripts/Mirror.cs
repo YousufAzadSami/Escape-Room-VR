@@ -35,6 +35,9 @@ public class Mirror : MonoBehaviour {
             // card.SetActive(true);
             wallTextCanvas.GetComponent<Animator>().SetTrigger("triggerOnOff");
 
+            // play sound 
+            GetComponent<AudioSource>().Play();
+
             // Puzzle Manager
             GameObject.Find("PuzzleManager").GetComponent<PuzzleManager>().OnPuzzleTwoSolved();
         }
