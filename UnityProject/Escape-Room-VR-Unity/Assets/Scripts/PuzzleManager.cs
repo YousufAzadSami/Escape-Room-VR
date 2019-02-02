@@ -30,8 +30,12 @@ public class PuzzleManager : MonoBehaviour {
     public AudioClip levelUp;
     public AudioClip wrongBuzzer;
 
-	// Use this for initialization
-	void Start () {
+    private bool isPuzzleOneSolved = false;
+    private bool isPuzzleTwoSolved = false;
+    private bool isPuzzleThreeSolved = false;
+
+    // Use this for initialization
+    void Start () {
 		
 		// //Check if instance already exists
 		// if (instance == null)
@@ -103,7 +107,7 @@ public class PuzzleManager : MonoBehaviour {
         // play audio 
         playLevelUpAudio();
 
-
+        isPuzzleOneSolved = true;
         currentPuzzleLevel = PuzzleLevel.Two;
     }
 
@@ -124,6 +128,7 @@ public class PuzzleManager : MonoBehaviour {
         // play audio 
         playLevelUpAudio();
 
+        isPuzzleTwoSolved = true;
         currentPuzzleLevel = PuzzleLevel.Three;
     }
 
@@ -138,6 +143,7 @@ public class PuzzleManager : MonoBehaviour {
         // play audio 
         playLevelUpAudio();
 
+        isPuzzleThreeSolved = true;
         currentPuzzleLevel = PuzzleLevel.Four;
     }
 
@@ -150,7 +156,10 @@ public class PuzzleManager : MonoBehaviour {
 
         if (givenCode.Count == 3)
         {
-            if (correctCode.SequenceEqual(givenCode))
+            if (correctCode.SequenceEqual(givenCode) 
+                && isPuzzleOneSolved == true
+                && isPuzzleTwoSolved == true
+                && isPuzzleThreeSolved == true)
             {
                 Debug.Log("Puzzle Solved");
 
